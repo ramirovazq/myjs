@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/jsx">
+
+      class TimesViewed extends React.Component {
+         constructor(props) {
+            super(props);
+            var timesViewed = 0;
+            if (localStorage.timesViewed) {
+                timesViewed = localStorage.timesViewed;
+            }
+            timesViewed++;
+            this.state = { numViews: timesViewed };
+            localStorage.timesViewed = timesViewed;
+         }
+
+         render() {
+           return <b>Hello world! ... times viewd: {this.state.numViews}</b>;
+         }
+      }
+
+      ReactDOM.render(
+        <TimesViewed />,
+        document.getElementById('container')
+      );
+
+    </script>
+  </body>
+</html>
