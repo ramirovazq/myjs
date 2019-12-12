@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Like Button</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+<body>
+
+    <div id='container'></div>
+
+    <script type="text/jsx">
+    class LikeButton extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.state = { liked : false };
+      }
+     
+
+      toggle() {
+        this.setState({liked: !this.state.liked});
+      }
+
+      render() {
+        var name = this.props.name;
+        var txt = this.state.liked ? 'Unlike' : 'Like';
+        var color = this.state.liked ? '#3b5998' : '#627AAC';
+        // var color = this.state.liked ? 'red' : 'black';
+        var bold = this.state.liked ? 'bold' : 'normal';
+        return (
+          <p>
+          <span style={{color: color, fontWeight: bold}}>
+            {name} </span><span onClick={this.toggle.bind(this)}> {'\ud83d\udc4d' + txt}
+          </span>
+          </p>
+        );
+      }
+    };
+
+    ReactDOM.render(
+      <div>
+        <LikeButton name="Java" />
+        <LikeButton name="JavaScript" />
+       </div>,
+    document.getElementById('container'))
+    ;
+    </script>
+
+  </body>
+</html>

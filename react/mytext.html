@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>My text</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+<body>
+
+    <div id='container'></div>
+
+    <script type="text/jsx">
+
+    class MyText extends React.Component { 
+
+      constructor(props) {
+        super(props);
+        this.state = { bold : false, color : 'black' };
+      }
+
+        handleMouseOver() {
+         this.setState( { bold : true } );
+       }
+       
+        handleMouseOut() {
+         this.setState( { bold: false } );
+        }
+
+        handleClick() { 
+          this.setState( { color : (this.state.color == 'red' ? 'black' : 'red') } );
+        }
+          
+          
+        render () { 
+          var color = this.state.color;
+          var bold = this.state.bold ? 'bold' : 'normal' ;
+          return ( 
+          <span style={{color:color, fontWeight:bold}} onClick={this.handleClick.bind(this)} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}> {this.props.text} </span>
+          );
+      } 
+    }; 
+
+    ReactDOM.render(
+      <div><MyText text="Look at me!"/></div>,
+      document.getElementById('container'));
+    </script>
+
+  </body>
+</html>

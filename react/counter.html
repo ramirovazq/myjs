@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Counter</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+
+    <div id='container'></div>
+
+  <script type="text/jsx">
+
+class Counter extends React.Component { 
+
+  constructor(props) {
+    super(props);
+      this.state = { 
+        count : 0 
+      };
+    this.incrementCountInter = this.incrementCount.bind(this);
+    } // constructor
+
+    incrementCount () { 
+      this.setState({ 
+               count: this.state.count + 1 
+        });
+      }
+      
+      
+      render () { // invoked when setState is called
+        return ( 
+          <div>Count: { this.state.count } 
+          < button type = "button" onClick = { this.incrementCountInter } > Increment </button> </div>
+        );
+      } 
+}; // class Counter 
+
+  ReactDOM.render(
+    <div> <Counter /></div>,
+    document.getElementById('container')
+  );
+  </script>
+
+  </body>
+</html>
