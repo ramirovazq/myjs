@@ -38,7 +38,10 @@
           var color = this.state.color;
           var bold = this.state.bold ? 'bold' : 'normal' ;
           return ( 
-          <span style={{color:color, fontWeight:bold}} onClick={this.handleClick.bind(this)} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}> {this.props.text} </span>
+          <span style={{color:color, fontWeight:bold}} 
+          onClick={this.handleClick.bind(this)} 
+          onMouseOver={this.handleMouseOver.bind(this)} 
+          onMouseOut={this.handleMouseOut.bind(this)}> {this.props.text} </span>
           );
       } 
     }; 
