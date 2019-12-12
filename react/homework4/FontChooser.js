@@ -5,10 +5,17 @@ class FontChooser extends React.Component {
 	this.state = { 
 			oculto : true,
 			fontsize: parseInt(this.props.size),
-			bold : false
+			bold : (this.props.bold === 'true')
 		};
     }
     
+    resetvalues(){
+	        this.setState(
+	        	{fontsize: parseInt(this.props.size)}
+	        );    
+
+    }
+
     toggleBold() {
          this.setState( { bold : !this.state.bold } );
     }
@@ -41,10 +48,10 @@ class FontChooser extends React.Component {
 		return(
 		       <div>
 		       	   <div className={this.state.oculto ? 'hidden' : ''}>
-				       <input type="checkbox" id="boldCheckbox" onClick={this.toggleBold.bind(this)} />
+				       <input type="checkbox" id="boldCheckbox" onChange={this.toggleBold.bind(this)} checked={this.state.bold} />
 
 				       <button id="decreaseButton" onClick={this.decrease.bind(this)}>-</button>
-				       <span id="fontSizeSpan" >{this.state.fontsize}</span>
+				       <span id="fontSizeSpan" onDoubleClick={this.resetvalues.bind(this)}>{this.state.fontsize}</span>
 				       <button id="increaseButton" onClick={this.increase.bind(this)}>+</button>
 
 			   	   </div>    
